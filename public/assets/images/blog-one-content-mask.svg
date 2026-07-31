@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" preserveAspectRatio="none">
+  <!-- Full-bleed card shape: top-center rise + rounded body -->
+  <path
+    fill="#ffffff"
+    d="M0 70
+       C0 52 12 42 28 42
+       H148
+       C168 42 178 10 200 10
+       C222 10 232 42 252 42
+       H372
+       C388 42 400 52 400 70
+       V472
+       C400 490 388 500 370 500
+       H30
+       C12 500 0 490 0 472
+       Z"
+  />
+</svg>

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 400" preserveAspectRatio="none">
+  <!-- Rounded card + top-center round notch (Mediplace style) -->
+  <path
+    fill="black"
+    d="M30,0
+       H170
+       A50,50 0 0 0 270,0
+       H410
+       A30,30 0 0 1 440,30
+       V370
+       A30,30 0 0 1 410,400
+       H30
+       A30,30 0 0 1 0,370
+       V30
+       A30,30 0 0 1 30,0
+       Z"
+  />
+</svg>

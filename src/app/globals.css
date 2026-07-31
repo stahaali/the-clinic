@@ -1,26 +1,522 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-navy: #031b4e;
+  --color-navy-light: #052a75;
+  --color-teal: #00bde0;
+  --color-teal-light: #33cbe6;
+  --color-teal-soft: #ecf5fb;
+  --color-slate-soft: #f4f4f4;
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+
+  --animate-accordion-down: accordion-down 0.35s ease-out;
+  --animate-accordion-up: accordion-up 0.3s ease-out;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes accordion-down {
+  from {
+    height: 0;
+    opacity: 0;
+  }
+  to {
+    height: var(--accordion-panel-height, auto);
+    opacity: 1;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@keyframes accordion-up {
+  from {
+    height: var(--accordion-panel-height, auto);
+    opacity: 1;
+  }
+  to {
+    height: 0;
+    opacity: 0;
+  }
+}
+
+:root {
+  --background: #f4f4f4;
+  --foreground: #031b4e;
+  --card: #ffffff;
+  --card-foreground: #031b4e;
+  --popover: #ffffff;
+  --popover-foreground: #031b4e;
+  --primary: #00bde0;
+  --primary-foreground: #ffffff;
+  --secondary: #ecf5fb;
+  --secondary-foreground: #031b4e;
+  --muted: #ecf5fb;
+  --muted-foreground: #566593;
+  --accent: #00bde0;
+  --accent-foreground: #ffffff;
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: #dde5ef;
+  --input: #dde5ef;
+  --ring: #00bde0;
+  --chart-1: #00bde0;
+  --chart-2: #031b4e;
+  --chart-3: #33cbe6;
+  --chart-4: #052a75;
+  --chart-5: #ccf2f9;
+  --radius: 0.625rem;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #031b4e;
+  --sidebar-primary: #00bde0;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #ecf5fb;
+  --sidebar-accent-foreground: #031b4e;
+  --sidebar-border: #dde5ef;
+  --sidebar-ring: #00bde0;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+  html {
+    @apply font-sans scroll-smooth;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .section-pad {
+    @apply px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24;
+  }
+  .container-narrow {
+    @apply mx-auto w-full max-w-6xl;
+  }
+  .container-wide {
+    @apply mx-auto w-full max-w-7xl;
+  }
+}
+
+/* Decorative underline under section headings (not banners) */
+.heading-line {
+  position: relative;
+  width: 72px;
+  height: 6px;
+  margin-top: 1rem;
+}
+
+.heading-line::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 2px;
+  margin-top: -1px;
+  background-color: #00bde0;
+}
+
+.heading-line::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 22px;
+  height: 6px;
+  margin-left: -11px;
+  background-color: #00bde0;
+}
+
+/* How it works — full ClinicMaster connecting line (all 3 steps) */
+.how-it-works__steps {
+  isolation: isolate;
+}
+
+.how-it-works__line {
+  left: 0;
+  top: -95px;
+  width: 100%;
+  height: 100%;
+  min-height: 280px;
+  background-image: url("/assets/images/line.svg");
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: 70% auto;
+  z-index: 0;
+}
+
+@media (max-width: 1023px) {
+  .how-it-works__line {
+    background-size: 78% auto;
+    top: -70px;
+  }
+}
+
+.how-it-works__icon {
+  position: relative;
+  z-index: 2;
+  background-color: #f0f4ff;
+  transition: transform 0.25s ease;
+}
+
+.how-it-works__icon:hover {
+  animation: howItWorksBounce 0.8s ease;
+}
+
+@keyframes howItWorksBounce {
+  0%,
+  20%,
+  53%,
+  80%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  40%,
+  43% {
+    transform: translate3d(0, -12px, 0);
+  }
+  70% {
+    transform: translate3d(0, -6px, 0);
+  }
+  90% {
+    transform: translate3d(0, -2px, 0);
+  }
+}
+
+.heading-line--light::before,
+.heading-line--light::after {
+  background-color: #00bde0;
+}
+
+/* Why Choose cards — Mediplace joined row style */
+.services-one__row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.75rem;
+}
+
+@media (min-width: 768px) {
+  .services-one__row {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0;
+    align-items: stretch;
+    filter: drop-shadow(0 12px 40px rgba(10, 37, 64, 0.1));
+  }
+
+  .services-one__single {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+  }
+}
+
+.services-one__single {
+  position: relative;
+  display: block;
+  text-align: center;
+}
+
+.services-one__icon {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 85px;
+  width: 85px;
+  margin: 0 auto -44px;
+  overflow: hidden;
+  border-radius: 50%;
+  background-color: #00bde0; /* brand teal */
+}
+
+.services-one__icon-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: 50%;
+  background-color: #031b4e; /* brand navy on hover */
+  transform: scale(0);
+  transform-origin: center;
+  transition: 0.4s cubic-bezier(0.62, 0.21, 0.45, 1.52);
+}
+
+.services-one__single:hover .services-one__icon-bg {
+  transform: scale(1);
+}
+
+.services-one__icon-svg {
+  position: relative;
+  height: 40px;
+  width: 40px;
+  color: #fff;
+  transform: scale(1);
+  transition: 500ms linear 0.1s;
+}
+
+.services-one__single:hover .services-one__icon-svg {
+  transform: scale(0.9);
+}
+
+.services-one__single-inner {
+  position: relative;
+  z-index: 1;
+  display: block;
+  background-color: #fff;
+  padding: 90px 40px 50px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.08);
+  /* Round notch cut at top center */
+  -webkit-mask-image: radial-gradient(
+    circle 50px at 50% 0,
+    transparent 49px,
+    #000 50px
+  );
+  mask-image: radial-gradient(
+    circle 50px at 50% 0,
+    transparent 49px,
+    #000 50px
+  );
+  border-radius: 30px;
+}
+
+@media (min-width: 768px) {
+  .services-one__single-inner {
+    box-shadow: none;
+    border-radius: 0;
+    border: none;
+    border-right: 1px solid #e2e8f0;
+    padding: 90px 36px 55px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+  }
+
+  .services-one__single:first-child .services-one__single-inner {
+    border-radius: 30px 0 0 30px;
+    border-left: 1px solid #e2e8f0;
+    border-top: 1px solid #e2e8f0;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  .services-one__single:last-child .services-one__single-inner {
+    border-radius: 0 30px 30px 0;
+    border-right: 1px solid #e2e8f0;
+    border-top: 1px solid #e2e8f0;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  .services-one__single:not(:first-child):not(:last-child)
+    .services-one__single-inner {
+    border-top: 1px solid #e2e8f0;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  .services-one__title {
+    font-size: 17px;
+    min-height: 2.6em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .services-one__text {
+    flex: 1;
+  }
+}
+
+.services-one__title {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.3;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.services-one__title a {
+  color: #031b4e;
+  transition: color 0.25s ease;
+}
+
+.services-one__title a:hover {
+  color: #00bde0;
+}
+
+.services-one__text {
+  margin-top: 18px;
+  margin-bottom: 0;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #566593;
+}
+
+@media (min-width: 1024px) {
+  .services-one__single-inner {
+    padding: 90px 48px 55px;
+  }
+
+  .services-one__title {
+    font-size: 18px;
+    line-height: 26px;
+  }
+}
+
+/* Blog-one / Services cards — Mediplace style */
+
+.services-preview-card__body {
+  isolation: isolate;
+}
+
+.services-preview-card__curve {
+  box-shadow: 0 8px 16px rgba(10, 37, 64, 0.04);
+}
+
+/* Laptop 1366px — slightly smaller hero doctor image */
+@media (min-width: 1101px) and (max-width: 1366px) {
+  .hero-doctor-img {
+    height: 138% !important;
+  }
+}
+
+/* iPad Pro 1024px only — balance both hero columns */
+@media (min-width: 1024px) and (max-width: 1100px) {
+  .hero-banner-inner {
+    gap: 1rem !important;
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr) !important;
+    min-height: 80vh !important;
+  }
+
+  .hero-copy {
+    min-height: auto !important;
+    padding-block: 2rem;
+  }
+
+  .hero-brand {
+    font-size: 0.95rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  .hero-title {
+    font-size: 1.85rem !important;
+    line-height: 1.15 !important;
+    max-width: 100% !important;
+  }
+
+  .hero-desc {
+    margin-top: 1rem !important;
+    font-size: 0.95rem !important;
+    max-width: 100% !important;
+  }
+
+  .hero-actions {
+    margin-top: 1.25rem !important;
+    flex-wrap: wrap;
+  }
+
+  .hero-actions a,
+  .hero-actions button {
+    height: 2.5rem !important;
+    padding-inline: 1.1rem !important;
+    font-size: 0.875rem !important;
+  }
+
+  .hero-media-wrap {
+    max-width: 360px !important;
+    margin-inline: auto 0;
+  }
+
+  .hero-doctor-img {
+    height: 100% !important;
+    width: 100% !important;
+  }
+
+  .hero-heart-card {
+    right: -5rem !important;
+    top: -2% !important;
+    width: 64px !important;
+    height: 64px !important;
+    border-radius: 16px !important;
+  }
+
+  .hero-heart-card img {
+    width: 36px !important;
+    height: 36px !important;
+  }
+
+  .hero-stat-card {
+    width: 128px !important;
+    padding: 0.75rem !important;
+    bottom: 40% !important;
+  }
+}
+
+/* 768px — reduce doctor image width */
+@media (max-width: 768px) {
+  .hero-doctor-img {
+    width: 85% !important;
+    height: auto !important;
+    max-height: 95% !important;
+  }
+}
+
+/* 576px mobile only — slightly taller banner */
+@media (max-width: 576px) {
+  .hero-banner-inner {
+    min-height: 92vh !important;
+  }
 }
