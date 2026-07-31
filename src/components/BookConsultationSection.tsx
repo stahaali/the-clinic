@@ -56,7 +56,7 @@ export function BookConsultationSection() {
   }
 
   return (
-    <section className="relative z-10 overflow-hidden bg-navy section-pad">
+    <section className="book-consult-section relative z-10 overflow-hidden bg-navy section-pad">
       <div
         className="pointer-events-none absolute inset-0 opacity-40"
         style={{
@@ -65,7 +65,7 @@ export function BookConsultationSection() {
         }}
       />
 
-      <div className="container-wide relative grid items-stretch gap-10 lg:grid-cols-2 lg:gap-12">
+      <div className="book-consult-grid container-wide relative grid items-stretch gap-10 lg:grid-cols-2 lg:gap-12">
         <FadeIn className="flex h-full flex-col justify-center">
           <h2 className="max-w-xl font-display text-3xl font-bold leading-tight tracking-tight sm:text-4xl lg:text-[2.35rem]">
             <span className="text-teal">Get in Touch with</span>{" "}
@@ -77,13 +77,13 @@ export function BookConsultationSection() {
             and reliably.
           </p>
 
-          <ul className="mt-8 space-y-6">
+          <ul className="book-contact-list mt-8 space-y-6">
             {CONTACT_ITEMS.map((item) => (
-              <li key={item.label} className="flex items-start gap-4">
+              <li key={item.label} className="book-contact-item flex items-start gap-4">
                 <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-teal text-white">
                   <item.Icon className="h-5 w-5" strokeWidth={1.75} />
                 </span>
-                <div>
+                <div className="book-contact-text min-w-0 flex-1">
                   <p className="text-sm text-white/65">{item.label}</p>
                   <a
                     href={item.href}
@@ -93,7 +93,7 @@ export function BookConsultationSection() {
                         ? "noopener noreferrer"
                         : undefined
                     }
-                    className="mt-0.5 block font-display text-lg font-semibold text-white transition hover:text-teal sm:text-xl"
+                    className="book-contact-value mt-0.5 block break-words font-display text-lg font-semibold text-white transition hover:text-teal sm:text-xl"
                   >
                     {item.value}
                   </a>
@@ -122,7 +122,7 @@ export function BookConsultationSection() {
         </FadeIn>
 
         <FadeIn delay={0.1} className="flex h-full min-h-0 flex-col">
-          <div className="flex h-full min-h-0 flex-col rounded-[1.5rem] border border-white/10 bg-white p-5 shadow-[0_20px_50px_rgba(0,0,0,0.25)] sm:p-6 lg:p-7">
+          <div className="book-consult-form-card flex h-full min-h-0 flex-col rounded-[1.5rem] border border-white/10 bg-white p-5 shadow-[0_20px_50px_rgba(0,0,0,0.25)] sm:p-6 lg:p-7">
             {submitted ? (
               <div className="flex flex-1 flex-col items-center justify-center py-10 text-center">
                 <CheckCircle2 className="mb-4 h-12 w-12 text-teal" />
@@ -137,9 +137,9 @@ export function BookConsultationSection() {
             ) : (
               <form
                 onSubmit={handleSubmit}
-                className="flex h-full min-h-0 flex-1 flex-col gap-3"
+                className="book-consult-form flex h-full min-h-0 flex-1 flex-col gap-3"
               >
-                <div className="grid gap-3 sm:grid-cols-2">
+                <div className="book-consult-fields grid grid-cols-1 gap-3 sm:grid-cols-2">
                   <div className="space-y-1">
                     <Label htmlFor="book-name" className="text-sm text-navy">
                       Full Name
@@ -237,7 +237,7 @@ export function BookConsultationSection() {
                 <Button
                   type="submit"
                   size="lg"
-                  className="mt-1 h-10 w-fit shrink-0 rounded-xl bg-teal px-7 text-white hover:bg-[#00a1be]"
+                  className="book-consult-submit mt-1 h-10 w-fit shrink-0 rounded-xl bg-teal px-7 text-white hover:bg-[#00a1be]"
                 >
                   Book Consultation
                 </Button>

@@ -505,18 +505,132 @@
   }
 }
 
-/* 768px — reduce doctor image width */
+/* 768px iPad — hide circles + floating cards, simplify doctor image */
 @media (max-width: 768px) {
+  .hero-banner-inner {
+    padding-top: 5rem !important;
+  }
+
+  .hero-circle,
+  .hero-heart-card,
+  .hero-stat-card {
+    display: none !important;
+  }
+
   .hero-doctor-img {
+    left: 50% !important;
     width: 85% !important;
     height: auto !important;
     max-height: 95% !important;
   }
+
+  /* Specialties — 2 columns on iPad (not 3/4) */
+  .specialties-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  /* How it works — hide connecting lines on iPad */
+  .how-it-works__line {
+    display: none !important;
+  }
 }
 
-/* 576px mobile only — slightly taller banner */
+/* 576px mobile only — hero media composition */
 @media (max-width: 576px) {
   .hero-banner-inner {
-    min-height: 92vh !important;
+    min-height: auto !important;
+    gap: 1.5rem !important;
+    padding-top: 5.5rem !important;
+    padding-bottom: 0 !important;
+  }
+
+  .hero-copy {
+    padding-bottom: 0.5rem !important;
+  }
+
+  .hero-media-col {
+    align-self: center !important;
+    width: 100%;
+    max-width: 340px;
+    margin-inline: auto;
+    padding-top: 1.25rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .hero-media-wrap {
+    max-width: 340px !important;
+    margin-inline: auto !important;
+    padding-top: 0.75rem;
+  }
+
+  .hero-media-wrap > div {
+    margin-bottom: 0 !important;
+  }
+
+  .hero-doctor-img {
+    top: 0.75rem !important;
+    bottom: auto !important;
+    width: 88% !important;
+    max-height: 92% !important;
+  }
+
+  /* Specialties — single column, comfortable touch targets */
+  .specialties-grid {
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem !important;
+  }
+
+  .specialty-card {
+    padding: 0.9rem 1rem !important;
+    font-size: 0.875rem !important;
+    gap: 0.75rem !important;
+  }
+
+  /* Book consultation contact info — prevent overflow */
+  .book-contact-list {
+    max-width: 100%;
+  }
+
+  .book-contact-item {
+    gap: 0.75rem !important;
+  }
+
+  .book-contact-value {
+    font-size: 0.95rem !important;
+    line-height: 1.35 !important;
+    overflow-wrap: anywhere !important;
+    word-break: break-word !important;
+  }
+
+  /* Book consultation form — mobile only */
+  .book-consult-section.section-pad {
+    padding-block: 2.5rem !important;
+  }
+
+  .book-consult-grid {
+    gap: 1.75rem !important;
+    padding-inline: 1rem !important;
+    max-width: 100% !important;
+  }
+
+  .book-consult-form-card {
+    padding: 1rem !important;
+    border-radius: 1.25rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .book-consult-fields {
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem !important;
+  }
+
+  .book-consult-form {
+    gap: 0.75rem !important;
+  }
+
+  .book-consult-submit {
+    width: 100% !important;
+    height: 2.75rem !important;
   }
 }

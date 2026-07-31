@@ -11,22 +11,22 @@ export function HeroMedia() {
         {/* Circles — larger disc stack behind the subject */}
         <span
           aria-hidden
-          className="absolute left-[60%] top-[48%] block aspect-square w-[118%] -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-white bg-white/60 opacity-60 shadow-[0_0_20px_rgba(0,0,0,0.02)]"
+          className="hero-circle absolute left-[60%] top-[48%] block aspect-square w-[118%] -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-white bg-white/60 opacity-60 shadow-[0_0_20px_rgba(0,0,0,0.02)]"
         />
 
         <span
           aria-hidden
-          className="absolute left-[60%] top-[48%] block aspect-square w-[98%] -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-white bg-white shadow-[0_0_20px_rgba(0,0,0,0.08)]"
+          className="hero-circle absolute left-[60%] top-[48%] block aspect-square w-[98%] -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-white bg-white shadow-[0_0_20px_rgba(0,0,0,0.08)]"
         />
 
         <span
           aria-hidden
-          className="absolute left-[60%] top-[48%] block aspect-square w-[80%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-navy/20"
+          className="hero-circle absolute left-[60%] top-[48%] block aspect-square w-[80%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-navy/20"
         />
 
         <span
           aria-hidden
-          className="absolute left-[60%] top-[48%] block aspect-square w-[60%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/80"
+          className="hero-circle absolute left-[60%] top-[48%] block aspect-square w-[60%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/80"
         />
 
         <Image

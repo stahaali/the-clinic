@@ -148,13 +148,13 @@ export default function HomePage() {
               description="We support 45+ specialties with coding nuance, payer patterns, and documentation realities in mind."
             />
           </FadeIn>
-          <Stagger className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4">
+          <Stagger className="specialties-grid grid grid-cols-1 gap-3 min-[577px]:grid-cols-2 lg:grid-cols-4">
             {SPECIALTIES.slice(0, 12).map((specialty, index) => {
               const Icon = SPECIALTY_ICONS[index] ?? Stethoscope;
               return (
                 <StaggerItem
                   key={specialty}
-                  className="flex items-center gap-3 rounded-lg bg-navy px-5 py-5 text-sm font-medium text-white"
+                  className="specialty-card flex items-center gap-3 rounded-lg bg-navy px-5 py-5 text-sm font-medium text-white"
                 >
                   <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-white/10 text-teal">
                     <Icon className="h-4 w-4" strokeWidth={1.75} />

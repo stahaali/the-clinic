@@ -35,16 +35,19 @@ export function Header() {
           : "bg-white",
       )}
     >
-      <div className="container-wide flex h-[7.5rem] items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
-        <Link href="/" className="flex shrink-0 items-center">
+      <div className="container-wide flex h-16 items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
+        <Link href="/" className="flex shrink-0 items-center gap-2.5">
           <Image
-            src="/assets/images/logo.webp"
-            alt={SITE.name}
-            width={100}
-            height={100}
-            className="h-[100px] w-[100px] object-contain"
+            src="/images/logo.png"
+            alt={`${SITE.name} logo`}
+            width={40}
+            height={40}
+            className="h-9 w-9 rounded-md object-cover sm:h-10 sm:w-10"
             priority
           />
+          <span className="font-display text-base font-semibold tracking-tight text-navy sm:text-lg">
+            {SITE.name}
+          </span>
         </Link>
 
         <nav className="hidden items-center gap-0.5 lg:flex" aria-label="Primary">
@@ -73,7 +76,7 @@ export function Header() {
         <div className="flex items-center gap-2">
           <Button
             render={<Link href="/contact" />}
-            className="hidden h-11 bg-navy px-6 text-white hover:bg-navy-light sm:inline-flex"
+            className="hidden h-11 bg-navy px-6 text-white hover:bg-navy-light lg:inline-flex"
           >
             Book Free Consultation
           </Button>

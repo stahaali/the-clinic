@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { CheckCircle2, Mail, MapPin, Phone } from "lucide-react";
 import { HeadingLine } from "@/components/HeadingLine";
 import { FadeIn, SectionHeading } from "@/components/Motion";
@@ -27,25 +28,26 @@ export function ContactClient() {
 
   return (
     <main>
-      <section className="relative z-10 bg-navy section-pad !pb-16 !pt-20">
-        <div className="container-narrow text-center">
+      <section className="relative z-10 flex min-h-[240px] items-center justify-center overflow-hidden sm:min-h-[300px] lg:min-h-[360px]">
+        <Image
+          src="/assets/images/about/banner.webp"
+          alt=""
+          fill
+          priority
+          className="object-cover object-center"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-navy/75" />
+        <div className="container-wide relative z-[1] px-4 py-16 text-center sm:px-6 lg:px-8">
           <FadeIn>
-            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-teal-light">
+            <h1 className="font-display text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-[3.25rem]">
               Contact
-            </p>
-            <h1 className="font-display text-4xl font-semibold text-white sm:text-5xl">
-              Book your free consultation
             </h1>
-            <p className="mx-auto mt-5 max-w-2xl text-lg text-white/75">
-              Tell us about your practice. We&apos;ll respond within one business day
-              to schedule a calm, productive conversation about your revenue
-              goals.
-            </p>
           </FadeIn>
         </div>
       </section>
 
-      <section className="relative z-10 section-pad">
+      <section className="relative z-10 bg-[#F0F4FF] section-pad">
         <div className="container-wide grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
           <FadeIn>
             <SectionHeading
@@ -56,7 +58,7 @@ export function ContactClient() {
             />
             <ul className="space-y-5">
               <li className="flex gap-3">
-                <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-teal-soft text-teal">
+                <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-navy text-teal">
                   <Phone className="h-4 w-4" />
                 </span>
                 <div>
@@ -70,7 +72,7 @@ export function ContactClient() {
                 </div>
               </li>
               <li className="flex gap-3">
-                <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-teal-soft text-teal">
+                <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-navy text-teal">
                   <Mail className="h-4 w-4" />
                 </span>
                 <div>
@@ -84,7 +86,7 @@ export function ContactClient() {
                 </div>
               </li>
               <li className="flex gap-3">
-                <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-teal-soft text-teal">
+                <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-navy text-teal">
                   <MapPin className="h-4 w-4" />
                 </span>
                 <div>
@@ -169,12 +171,26 @@ export function ContactClient() {
                   >
                     Submit request
                   </Button>
-                  <p className="text-xs text-muted-foreground">
-                    By submitting, you agree we may contact you about {SITE.name}{" "}
-                    services. We never sell your information.
-                  </p>
                 </form>
               )}
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* Map */}
+      <section className="relative z-10 bg-white section-pad">
+        <div className="container-wide">
+          <FadeIn>
+            <div className="overflow-hidden rounded-2xl border border-[#e5eaf0] shadow-sm">
+              <iframe
+                title={`${SITE.name} office location`}
+                src={`https://maps.google.com/maps?q=${encodeURIComponent(SITE.address)}&z=15&output=embed`}
+                className="h-[320px] w-full border-0 sm:h-[400px] lg:h-[460px]"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
+              />
             </div>
           </FadeIn>
         </div>

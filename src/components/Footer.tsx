@@ -11,14 +11,17 @@ export function Footer() {
       <div className="container-wide px-4 pt-14 pb-6 sm:px-6 lg:px-8">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           <div className="space-y-4 lg:col-span-1">
-            <Link href="/" className="inline-flex items-center">
+            <Link href="/" className="flex items-center gap-2.5">
               <Image
-                src="/assets/images/logo.webp"
-                alt={SITE.name}
-                width={130}
-                height={130}
-                className="h-[130px] w-[130px] object-contain"
+                src="/images/logo.png"
+                alt=""
+                width={36}
+                height={36}
+                className="h-9 w-9 rounded-md object-cover"
               />
+              <span className="font-display text-lg font-semibold">
+                {SITE.name}
+              </span>
             </Link>
             <p className="max-w-xs text-sm leading-relaxed text-white/70">
               {SITE.tagline}
