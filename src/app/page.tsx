@@ -85,7 +85,7 @@ export default function HomePage() {
               </p>
             </FadeIn>
             <FadeIn delay={0.08} className="relative z-[1]">
-              <h1 className="hero-title max-w-xl text-balance font-display text-4xl font-black leading-[1.1] text-white sm:text-5xl lg:text-[3.25rem]">
+              <h1 className="hero-title w-full max-w-none text-balance font-display text-4xl font-black leading-[1.1] text-white sm:text-5xl lg:text-[3.25rem]">
                 Empowering Healthcare Providers with Elite{" "}
                 <span className="text-teal-light">Revenue Solutions</span>
               </h1>

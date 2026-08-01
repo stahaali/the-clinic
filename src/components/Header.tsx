@@ -4,11 +4,12 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X } from "lucide-react";
+import { Menu, Phone, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
 import { NAV_LINKS, SITE } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
+
+const phoneHref = `tel:${SITE.phone.replace(/\D/g, "")}`;
 
 export function Header() {
   const pathname = usePathname();
@@ -29,13 +30,13 @@ export function Header() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 transition-all duration-300",
+        "left-0 right-0 top-0 z-50 w-full transition-all duration-300",
         scrolled
-          ? "border-b border-[#dde5ef] bg-white shadow-sm"
-          : "bg-white",
+          ? "fixed border-b border-white/10 bg-navy shadow-sm"
+          : "absolute bg-transparent",
       )}
     >
-      <div className="container-wide flex h-16 items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
+      <div className="container-wide flex h-auto min-h-16 items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
         <Link href="/" className="flex shrink-0 items-center gap-2.5">
           <Image
             src="/images/logo.png"
@@ -45,7 +46,7 @@ export function Header() {
             className="h-9 w-9 rounded-md object-cover sm:h-10 sm:w-10"
             priority
           />
-          <span className="font-display text-base font-semibold tracking-tight text-navy sm:text-lg">
+          <span className="font-display text-base font-semibold tracking-tight text-white sm:text-lg">
             {SITE.name}
           </span>
         </Link>
@@ -62,9 +63,7 @@ export function Header() {
                 href={link.href}
                 className={cn(
                   "rounded-md px-3.5 py-2 text-[15px] font-semibold transition-colors",
-                  active
-                    ? "text-teal"
-                    : "text-navy hover:text-teal",
+                  active ? "text-teal" : "text-white hover:text-teal",
                 )}
               >
                 {link.label}
@@ -74,15 +73,26 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <Button
-            render={<Link href="/contact" />}
-            className="hidden h-11 bg-navy px-6 text-white hover:bg-navy-light lg:inline-flex"
+          <a
+            href={phoneHref}
+            className="hidden items-center gap-3 lg:flex"
+            aria-label={`Call ${SITE.phone}`}
           >
-            Book Free Consultation
-          </Button>
+            <span className="relative flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-teal ring-[6px] ring-white/15">
+              <Phone className="h-5 w-5 text-white" strokeWidth={2.25} />
+            </span>
+            <span className="flex flex-col leading-tight">
+              <span className="text-[13px] font-medium text-white/65">
+                Have Any Questions?
+              </span>
+              <span className="text-[17px] font-bold tracking-wide text-white">
+                {SITE.phone}
+              </span>
+            </span>
+          </a>
           <button
             type="button"
-            className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-[#dde5ef] bg-white text-navy lg:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-white/20 bg-white/10 text-white lg:hidden"
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
@@ -99,7 +109,7 @@ export function Header() {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="overflow-hidden border-t border-[#dde5ef] bg-white lg:hidden"
+            className="overflow-hidden border-t border-white/10 bg-navy lg:hidden"
           >
             <nav className="flex flex-col gap-1 px-4 py-4" aria-label="Mobile">
               {NAV_LINKS.map((link) => {
@@ -114,20 +124,30 @@ export function Header() {
                     className={cn(
                       "rounded-md px-3 py-2.5 text-sm font-semibold transition-colors",
                       active
-                        ? "bg-teal-soft text-teal"
-                        : "text-navy hover:bg-teal-soft hover:text-teal",
+                        ? "bg-white/10 text-teal"
+                        : "text-white hover:bg-white/10 hover:text-teal",
                     )}
                   >
                     {link.label}
                   </Link>
                 );
               })}
-              <Button
-                render={<Link href="/contact" />}
-                className="mt-2 h-11 bg-navy px-6 text-white hover:bg-navy-light"
+              <a
+                href={phoneHref}
+                className="mt-3 flex items-center gap-3 rounded-md px-3 py-2.5"
               >
-                Book Free Consultation
-              </Button>
+                <span className="relative flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-teal ring-[5px] ring-white/15">
+                  <Phone className="h-4 w-4 text-white" strokeWidth={2.25} />
+                </span>
+                <span className="flex flex-col leading-tight">
+                  <span className="text-xs font-medium text-white/65">
+                    Have Any Questions?
+                  </span>
+                  <span className="text-base font-bold text-white">
+                    {SITE.phone}
+                  </span>
+                </span>
+              </a>
             </nav>
           </motion.div>
         )}

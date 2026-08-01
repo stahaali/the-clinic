@@ -424,10 +424,95 @@
   box-shadow: 0 8px 16px rgba(10, 37, 64, 0.04);
 }
 
-/* Laptop 1366px — slightly smaller hero doctor image */
+/* Laptop 1366px — pull media column off the right edge */
 @media (min-width: 1101px) and (max-width: 1366px) {
+  .hero-banner-inner {
+    gap: 2rem !important;
+    min-height: min(100vh, 760px) !important;
+    padding-top: 5.5rem !important;
+    padding-left: 2rem !important;
+    padding-right: 2.5rem !important;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr) !important;
+    align-items: end !important;
+  }
+
+  .hero-copy {
+    min-height: auto !important;
+    padding-bottom: 2.5rem !important;
+    align-self: center !important;
+  }
+
+  .hero-brand {
+    font-size: 1rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  .hero-title {
+    font-size: 2.35rem !important;
+    line-height: 1.12 !important;
+    max-width: 100% !important;
+  }
+
+  .hero-desc {
+    margin-top: 1rem !important;
+    font-size: 0.95rem !important;
+    max-width: 26rem !important;
+  }
+
+  .hero-actions {
+    margin-top: 1.5rem !important;
+  }
+
+  .hero-actions a,
+  .hero-actions button {
+    height: 2.75rem !important;
+    font-size: 0.8125rem !important;
+  }
+
+  .hero-media-col {
+    align-self: end !important;
+    width: 100% !important;
+    padding-right: 2rem !important;
+    box-sizing: border-box !important;
+  }
+
+  .hero-media-wrap {
+    max-width: 400px !important;
+    margin-inline: auto !important;
+  }
+
+  .hero-media-wrap > div {
+    margin-bottom: 0 !important;
+  }
+
+  .hero-circle {
+    left: 48% !important;
+  }
+
   .hero-doctor-img {
-    height: 138% !important;
+    height: 118% !important;
+  }
+
+  .hero-heart-card {
+    left: auto !important;
+    right: -1.25rem !important;
+    top: 4% !important;
+    width: 68px !important;
+    height: 68px !important;
+    border-radius: 18px !important;
+  }
+
+  .hero-heart-card img {
+    width: 38px !important;
+    height: 38px !important;
+  }
+
+  .hero-stat-card {
+    width: 136px !important;
+    padding: 0.85rem !important;
+    bottom: 38% !important;
+    left: -5rem !important;
+    right: auto !important;
   }
 }
 
@@ -632,5 +717,24 @@
   .book-consult-submit {
     width: 100% !important;
     height: 2.75rem !important;
+  }
+}
+
+/* 366px mobile — show heart card on the right */
+@media (max-width: 366px) {
+  .hero-heart-card {
+    display: flex !important;
+    left: auto !important;
+    right: 0.25rem !important;
+    top: 8% !important;
+    width: 56px !important;
+    height: 56px !important;
+    border-radius: 14px !important;
+  }
+
+  .hero-heart-card img {
+    width: 32px !important;
+    height: 32px !important;
+    translate: 0 !important;
   }
 }
