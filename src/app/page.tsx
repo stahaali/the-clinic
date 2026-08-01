@@ -23,7 +23,7 @@ import { FadeIn, SectionHeading, Stagger, StaggerItem } from "@/components/Motio
 import { ServicesSection } from "@/components/ServicesSection";
 import { HowItWorksSection } from "@/components/HowItWorksSection";
 import { GetStartedSection } from "@/components/GetStartedSection";
-import { OurBenefitsSection } from "@/components/OurBenefitsSection";
+import { AboutHomeSection } from "@/components/AboutHomeSection";
 import { BookConsultationSection } from "@/components/BookConsultationSection";
 import { FaqSection } from "@/components/FaqSection";
 import {
@@ -171,7 +171,7 @@ export default function HomePage() {
 
       <HowItWorksSection />
 
-      <OurBenefitsSection />
+      <AboutHomeSection />
 
       {/* Testimonials */}
       <section className="relative z-10 bg-navy section-pad">
